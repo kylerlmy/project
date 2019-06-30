@@ -1,11 +1,9 @@
 ﻿using FriscoDev.Application.EngrDevNew;
 using FriscoDev.Domain.Entity.EngrDevNew;
+using FriscoDev.UI.Helper;
 using FriscoDev.UI.Utils;
 using FriscoDev.UI.ViewModel;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 
@@ -13,12 +11,14 @@ namespace FriscoDev.UI.Controllers
 {
     public class SiteController : BaseController
     {
-        private AccountEntity _loginUser;
         public ActionResult Index()
         {
-            ViewBag.UserType = _loginUser.UR_TYPE_ID;
+            var userTypeId = LoginHelper.UserType;
+            var userId = LoginHelper.UserID;
+            ViewBag.UserType = userTypeId;
             var userService = new AccountApp();
-            var model = GetLogoInfo(_loginUser.UR_TYPE_ID, _loginUser.UR_ID);
+
+            var model = GetLogoInfo(userTypeId, userId.ToString());
             if (model != null)
             {
                 var site = GetSiteModel(model.Address);
@@ -40,7 +40,7 @@ namespace FriscoDev.UI.Controllers
             var userService = new AccountApp();
             if (UR_TYPE_ID == 3)
             {
-                //userId = userService.GetParentIDByUser(UR_ID);
+                userId = userService.GetParentIDByUser(UR_ID);
             }
             else
             {//管理员
@@ -48,7 +48,8 @@ namespace FriscoDev.UI.Controllers
             }
 
             SiteConfigEntity site = null;
-            // site = userService.GetSiteConfigByUser(userId);
+            var sitConfigApp = new SiteConfigApp();
+            site = sitConfigApp.GetSiteConfigByUser(userId);
 
             result.Address = site.Address;
             var siteViewModel = GetSiteModel(site.Address);
@@ -79,19 +80,20 @@ namespace FriscoDev.UI.Controllers
                     ProfileImgUrl = siteConfigViewModel.ProfileImgUrl
                 };
 
-                configEntity.Login_UR_ID = _loginUser.UR_ID;
-                var userService = new AccountApp();
-                int i = 0;//userService.GetIsExistSiteConfigByUser(site.Login_UR_ID);//TODO:need to call
+                var userId = LoginHelper.UserID;
+
+                configEntity.Login_UR_ID = userId;
+                var sitconfigApp = new SiteConfigApp();
+                int i = sitconfigApp.GetIsExistSiteConfigByUser(configEntity.Login_UR_ID);
 
                 configEntity.Address = GetJsonString(siteConfigViewModel);
                 if (i > 0)
                 {
-                    //TODO:Save
-                    //  userService.SetSaveSiteConfig(site);
+                    sitconfigApp.SaveSiteConfig(configEntity);
                 }
                 else
-                {//TODO:Add
-                    //userService.SetAddSiteConfig(site);
+                {
+                    sitconfigApp.AddSiteConfig(configEntity);
                 }
                 result.errorCode = 200;
             }

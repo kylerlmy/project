@@ -1,4 +1,5 @@
-﻿using FriscoDev.Domain.Entity.EngrDevNew;
+﻿using FriscoDev.Application.EngrDevNew;
+using FriscoDev.Domain.Entity.EngrDevNew;
 using FriscoDev.UI.Helper;
 using FriscoDev.UI.Utils;
 using FriscoDev.UI.ViewModel;
@@ -40,12 +41,12 @@ namespace FriscoDev.UI.Controllers
             return View();
         }
 
-        /*
+
         //Real Time Chars
         public JsonNetResult DeviceCharts(int id, string startDate = "", string endDate = "")
         {
             _timeZone = LoginHelper.LoginCookieTimeZone;
-            var statsLogService = new StatsLogService();
+            var statsLogService = new StatsLogApp();
             if (!string.IsNullOrEmpty(startDate))
             {
                 startDate = CommonUtils.GetLocalTime(Convert.ToDateTime(startDate)).ToString("yyyy-MM-dd HH:mm");
@@ -73,17 +74,17 @@ namespace FriscoDev.UI.Controllers
                     TotalCount = statsLogs.Count(),
                     Closing = statsLogs.Count(s => s.Direction == "CLOS"),
                     Away = statsLogs.Count(s => s.Direction == "AWAY"),
-                    Average = Math.Round(statsLogs.Sum(s => s.AverageSpeed) / statsLogs.Count()),
-                    Last = statsLogs.Min(s => s.LastSpeed),
-                    HighAlam = statsLogs.Max(s => s.PeakSpeed),
-                    LowAlam = statsLogs.Min(s => s.PeakSpeed),
+                    Average = Math.Round((double)statsLogs.Sum(s => s.AverageSpeed) / statsLogs.Count()),
+                    Last = (double)statsLogs.Min(s => s.LastSpeed),
+                    HighAlam = (double)statsLogs.Max(s => s.PeakSpeed),
+                    LowAlam = (double)statsLogs.Min(s => s.PeakSpeed),
                     AverageTotal = _count / _day,
                     LastDate = statsLogs.Max(s => s.Timestamp).ToString("yyyy-MM-dd HH:mm"),
                 };
 
                 foreach (var item in groupBySpeed)
                 {
-                    var list = new List<double> { item.Key };
+                    var list = new List<double> { (double)item.Key };
                     var groupByDirection = item.GroupBy(x => x.Direction).ToDictionary(g => g.Key, g => g.ToList());
 
 
@@ -111,7 +112,5 @@ namespace FriscoDev.UI.Controllers
                 Data = new { Success = false }
             };
         }
-
-        */
     }
 }

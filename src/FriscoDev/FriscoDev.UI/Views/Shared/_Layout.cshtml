@@ -1,7 +1,6 @@
 ﻿
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8" />
     <title>@ViewBag.Title - ACI-PMG</title>
@@ -18,7 +17,6 @@
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/layer/layer.js"></script>
     <script src="~/Scripts/public.js"></script>
-
     <script src="~/library/assets/js/jquery.js"></script>
     <script src="~/library/js/layui/layui.js"></script>
     <script src="~/library/assets/js/bootstrap.min.js"></script>
@@ -26,8 +24,8 @@
     <script src="~/library/js/cookie.js"></script>
     <script src="~/library/js/main.js"></script>
     <script src="~/library/js/index.js"></script>
-
     <style>
+
         label.connection {
             font-size: 11px;
         }
@@ -40,7 +38,6 @@
             top: 150px;
         }
     </style>
-
     @RenderSection("head", false)
     <script>
         function HomePage() {
@@ -52,11 +49,8 @@
         }
     </script>
 </head>
-
 <body id="body-div">
-
     @Html.Partial("_PartialView")
-
     <div class="common-nav">
         <div class="common-nav-list">
             <ul class="ul">
@@ -68,7 +62,6 @@
                 <li>
                     <div>
                         <div class="title"><img src="@Url.Content("~/library/images/Device_icon.png")" alt="">Device Manager</div>
-
                         <div class="ul_list">
                             <ul>
                                 <li>
@@ -107,7 +100,6 @@
                                         <div class="l_title"><a href="@Url.Action("Index","Report")">Data Log</a></div>
                                     </div>
                                 </li>
-
                             </ul>
                         </div>
                     </div>
@@ -157,7 +149,6 @@
                                         <div class="l_title"><a href="@Url.Action("AverageSpeedCount","PMG")">Average Speed vs Count</a></div>
                                     </div>
                                 </li>
-
                             </ul>
                         </div>
                     </div>
@@ -176,7 +167,7 @@
                     </div>
                     <div class="list">
                         <a href="@Url.Content("~/User/Index")">User</a>
-                        <a href="#">Site</a>
+                        <a href="@Url.Action("Index","Site")">Site</a>
                         <a href="@Url.Content("~/Device/Index")">PMG Device</a>
                     </div>
                 </div>
@@ -203,7 +194,6 @@
             </div>
         </div>
     </div>
-
     <div class="web-common-nav">
         <div class="web-common-nav-btn"></div>
         <div class="slogan">
@@ -233,7 +223,6 @@
                                         <div class="l_title">System Message</div>
                                     </div>
                                 </li>
-
                                 <li>
                                     <div>
                                         <div class="l_title">SetUp</div>
@@ -308,7 +297,6 @@
                                         <div class="l_title">Average Speed vs Count</div>
                                     </div>
                                 </li>
-
                             </ul>
                         </div>
                     </div>
@@ -322,7 +310,7 @@
                         <div class="ul_list">
                             <ul>
                                 <li><a href="@Url.Content("~/User/Index")">User</a></li>
-                                <li><a href="#">Site</a></li>
+                                <li><a href="@Url.Action("Index","Site")">Site</a></li>
                                 <li><a href="#">PMG Device</a></li>
                             </ul>
                         </div>
@@ -360,21 +348,15 @@
             <div id="left_layout">
                 <div class="common-address">
                     @RenderSection("crumbs", required: false)
-
                     <span class="current_selected">Currently seleted PMG: <label class="dev">PMG-12/ Device02</label></span>
                 </div>
-
                 @RenderBody()
-
 
             </div>
         </div>
     </div>
-
     <div class="footer"></div>
-
     @RenderSection("scripts", required: false)
-
     <script>
         function Logout() {
             window.location.href = "@Url.Content("~/Login/LoginOut")";
@@ -382,7 +364,5 @@
 
         initDevice();
     </script>
-
 </body>
-
 </html>
