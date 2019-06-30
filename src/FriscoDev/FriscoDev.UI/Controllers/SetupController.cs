@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Web.Mvc;
 using FriscoDev.Application.EngrDevNew;
 using FriscoDev.Code;
-using FriscoDev.Code.Helper;
 using FriscoDev.Domain.Entity.EngrDevNew;
 using FriscoDev.UI.Utils;
 using FriscoDev.UI.ViewModel;
@@ -160,9 +158,10 @@ namespace FriscoDev.UI.Controllers
                             var pmdNewModel = new PMDEntity();
                             pmdNewModel = pmdModel;
                             pmdNewModel.NewConfiguration = newData;
-                            pmdNewModel.NewConfigurationTime = $""
-                                Convert.ToDateTime(DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString());
-                            pmdService.UpdatePmd(pmdNewModel);
+                            pmdNewModel.NewConfigurationTime = $"{DateTime.Now.ToShortDateString()} {DateTime.Now.ToShortTimeString()}";
+                            //Convert.ToDateTime(DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString());
+                            //TODO: Need call UpdatePmd
+                            // pmdService.UpdatePmd(pmdNewModel);
                             // Notify the change of configuration
                             PMDConfiguration.SendNotificationToCloudServer(PMDConfiguration.TableID.PMD, PMDConfiguration.DatabaseOperationType.ConfigurationUpdate, pmdModel.IMSI);
                             //PMDConfiguration.SendNotificationToCloudServer(PMDConfiguration.TableID.PMD, PMDConfiguration.DatabaseOperationType.ClockUpdate, pmdModel.IMSI);
@@ -170,7 +169,7 @@ namespace FriscoDev.UI.Controllers
                             DateTime nDate = new DateTime();
                             if (userClock)
                             {
-                                nDate = Common.Common.getLocalTime(loginUser.TIME_ZONE);
+                                nDate = CommonUtils.GetLocalTime(loginUser.TIME_ZONE);
                             }
                             else
                             {

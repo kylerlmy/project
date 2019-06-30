@@ -153,6 +153,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PMGController.cs" />
+    <Compile Include="Controllers\SetupController.cs" />
     <Compile Include="Controllers\SiteController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -167,6 +168,8 @@
     <Compile Include="Utils\LoginCommand.cs" />
     <Compile Include="ViewModel\AddressViewModel.cs" />
     <Compile Include="ViewModel\BaseEnitity.cs" />
+    <Compile Include="ViewModel\GlobalModel.cs" />
+    <Compile Include="ViewModel\Timers.cs" />
     <Compile Include="ViewModel\UserManagementViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -388,6 +391,7 @@
     <Content Include="Views\Device\Message.cshtml" />
     <Content Include="Views\Device\Device.cshtml" />
     <Content Include="Views\Report\Index.cshtml" />
+    <Content Include="Views\Setup\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -418,6 +422,10 @@
     <ProjectReference Include="..\FriscoDev.Mapping\FriscoDev.Mapping.csproj">
       <Project>{e9034efd-ba10-4408-acc8-2e135c4bf7c3}</Project>
       <Name>FriscoDev.Mapping</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PMDInterface\PMDCellularInterface.csproj">
+      <Project>{40A4E676-4B93-451D-BFB8-50FBC444E61F}</Project>
+      <Name>PMDCellularInterface</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
