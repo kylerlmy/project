@@ -3,6 +3,7 @@ using System.Web.Mvc;
 using FriscoDev.Application.EngrDevNew;
 using FriscoDev.Code;
 using FriscoDev.Domain.Entity.EngrDevNew;
+using FriscoDev.UI.Helper;
 using FriscoDev.UI.Utils;
 using FriscoDev.UI.ViewModel;
 using PMDCellularInterface;
@@ -11,17 +12,18 @@ namespace FriscoDev.UI.Controllers
 {
     public class SetupController : BaseController
     {
-        public AccountEntity loginUser;
+        private string _timeZone;
 
         public ActionResult Index(decimal xvalue = 0, decimal yvalue = 0, string pid = "", int pmdid = 0)
         {
+            _timeZone = LoginHelper.LoginCookieTimeZone;
             if (pmdid > 0)
             {
                 System.Web.HttpContext.Current.Session["curpmdid"] = xvalue + "," + yvalue + "," + pid + "," + pmdid;
             }
 
-            ViewData["clockDate"] = CommonUtils.GetLocalTime(loginUser.TIME_ZONE).ToString("yyyy-MM-dd");
-            ViewData["clockTime"] = CommonUtils.GetLocalTime(loginUser.TIME_ZONE).ToString("HH:mm");
+            ViewData["clockDate"] = CommonUtils.GetLocalTime(_timeZone).ToString("yyyy-MM-dd");
+            ViewData["clockTime"] = CommonUtils.GetLocalTime(_timeZone).ToString("HH:mm");
             return View();
         }
 
@@ -169,7 +171,8 @@ namespace FriscoDev.UI.Controllers
                             DateTime nDate = new DateTime();
                             if (userClock)
                             {
-                                nDate = CommonUtils.GetLocalTime(loginUser.TIME_ZONE);
+                                _timeZone = LoginHelper.LoginCookieTimeZone;
+                                nDate = CommonUtils.GetLocalTime(_timeZone);
                             }
                             else
                             {
