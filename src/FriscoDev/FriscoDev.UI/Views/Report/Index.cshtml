@@ -24,26 +24,81 @@
         border-radius: 3px;
         padding-left: 5px;
     }
+
+    li {
+        float: left;
+    }
 </style>
 <div id="mainContent" class="layui-form">
     <div id="about-div-device">
-        <div class="col-sm-4 col-sm-offset-8" style="font-weight:bold;padding: 15px 20px 10px 8%;">
-            <span>
-                <label>Number of lines per page： </label>
-                <select class="selectOption" onchange="search()">
-                    <option value="10" selected="selected">10</option>
-                    <option value="15">15</option>
-                    <option value="20">20</option>
-                    <option value="25">25</option>
-                    <option value="30" selected="selected">30</option>
-                </select>
-            </span>
-            <span>
-                <input type="text" id="startDate" class="form-control usercontrol" value="" onclick="WdatePicker({ dateFmt: 'yyyy-MM-dd HH:mm'})" readonly="readonly" style="width:130px;" />
-            </span>
-            <sapn>
-                <input type="text" id="endDate" class="form-control usercontrol" value="" onclick="WdatePicker({ dateFmt: 'yyyy-MM-dd HH:mm'})" readonly="readonly" style="width:130px;" />
-            </sapn>
+        <div style="font-weight:bold;padding: 15px 20px 10px 8%;">
+            <ul style="float:right">
+                <li>Number of lines per page：</li>
+                <li>
+                    <select id="pigeSize" class="selectOption" onchange="search()">
+                        <option value="10" selected="selected">10</option>
+                        <option value="15">15</option>
+                        <option value="20">20</option>
+                        <option value="25">25</option>
+                        <option value="30">30</option>
+                    </select>
+                </li>
+                <li>Start Time:</li>
+                <li>
+                    <input type="text" id="startDate" class="selectOption" value="@ViewBag.StartDate" onclick="WdatePicker({ dateFmt: 'yyyy-MM-dd HH:mm'})" readonly="readonly" style="width:130px;" />
+                </li>
+                <li>End Time:</li>
+                <li>
+                    <input type="text" id="endDate" class="selectOption" value="@ViewBag.EndDate" onclick="WdatePicker({ dateFmt: 'yyyy-MM-dd HH:mm'})" readonly="readonly" style="width:130px;" />
+                </li>
+                <li><a href="javascript:void(0);" onclick="reloadData()" class="btn" id="search">Refresh </a></li>
+            </ul>
+
+            <div class="gridPanel">
+                <table id="gridList"></table>
+                <div id="gridPager"></div>
+            </div>
         </div>
     </div>
 </div>
+
+<script>
+    $(function () {
+        gridList();
+    })
+    function reloadData() {
+        gridList();
+    }
+    function gridList() {
+        var $gridList = $("#gridList");
+        var pageSize = $("#pigeSize").val();
+        var startTime = $("#startDate").val();
+        var endTime = $("#endDate").val();
+        var sTime = convertStrToDate(startTime);
+        var eTime = convertStrToDate(endTime);
+        if (eTime <= sTime) {
+            alert("End Time cannot be less than Start Time");
+            return false;
+        }
+        $gridList.dataGrid({
+            url: "@Url.Content("")",
+
+            colModel: [
+                { label: 'Target_ID', name: 'Target ID', width: 80, align: 'center' },
+                { label: 'Timestamp', name: 'Timestamp', width: 80, align: 'center' },
+                { label: 'Direction', name: 'Direction', width: 150, align: 'center' },
+                { label: 'LastSpeed', name: 'LastSpeed', width: 80, align: 'center'},
+                { label: 'PeakSpeed', name: 'PeakSpeed', width: 80, align: 'center'},
+                { label: 'AverageSpeed', name: 'AverageSpeed', width: 80, align: 'center', },
+                { label: 'Strength', name: 'Strength', width: 80, align: 'center',},
+                { label: 'Classfication', name: 'Classfication', width: 80, align: 'center',},
+                { label: 'Duration', name: 'Duration', width: 80, align: 'center',},
+            ],
+            pager: "#gridPager",
+            sortname: 'PMDName asc',
+            viewrecords: true,
+            rowNum: pageSize,
+            rownumbers: true
+        });
+    }
+</script>

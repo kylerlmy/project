@@ -13,5 +13,29 @@ namespace FriscoDev.UI.Controllers
         {
             return View();
         }
+        public ActionResult Configuration()
+        {
+            return View();
+        }
+        public ActionResult TextOptions()
+        {
+            return View();
+        }
+        public ActionResult Graphic()
+        {
+            return View();
+        }
+        public ActionResult Animation()
+        {
+            return View();
+        }
+        public ActionResult Schedule()
+        {
+            return View();
+        }
+        public ActionResult About()
+        {
+            return View();
+        }        
     }
 }

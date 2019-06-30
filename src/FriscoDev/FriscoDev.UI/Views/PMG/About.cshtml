@@ -1,0 +1,118 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+
+@section crumbs{
+
+    <div>
+        <span onclick="HomePage()" style="cursor:pointer;">Home</span>
+        <span>/</span>
+        <span>Device Mananger</span>
+        <span>/</span>
+        <span>SetUp</span>
+        <span>/</span>
+        <span>About</span>
+    </div>
+}
+
+<style>
+    .factory-div {
+        float: right;
+        position: relative;
+        top: -80px;
+        right: 15%;
+    }
+
+        .factory-div .factory-btn {
+            width: 120px;
+            height: 40px;
+            color: #524444;
+            font-weight: bold;
+        }
+</style>
+<div id="mainContent" class="layui-form">
+    <div class="content-title">About</div>
+    <div id="about-div-pmg">
+        <table id="about-table-pmg" class="table text-center">
+            <thead>
+                <tr>
+                    <th>PMG Model</th>
+                    <th>PMG-12</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>PMG Serial number</td>
+                    <td>SN000001</td>
+                </tr>
+                <tr class="widget-tr-backgroud">
+                    <td>Software version</td>
+                    <td>V2.2.1</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="factory-div"><input class="btn btn-default factory-btn" value="Factory Reset" onclick="Factory()" /></div>
+    </div>
+    <div id="about-div-device">
+        <table id="about-table-deviceinfo" class="table text-center">
+            <thead>
+                <tr class="header-background">
+                    <th>Installed option</th>
+                    <th>Serial number</th>
+                    <th>Software version</th>
+                    <th>Hardware version</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Remote Module</td>
+                    <td>SN10006</td>
+                    <td>V2.1</td>
+                    <td>A</td>
+                </tr>
+                <tr class="widget-tr-backgroud">
+                    <td>3G Module</td>
+                    <td>SN3456789</td>
+                    <td>V1.1</td>
+                    <td>A</td>
+                </tr>
+                <tr>
+                    <td>Alert Flashers</td>
+                    <td>NA</td>
+                    <td>NA</td>
+                    <td>NA</td>
+                </tr>
+                <tr class="widget-tr-backgroud">
+                    <td>MPPT Module</td>
+                    <td>SN100456</td>
+                    <td>V1.0</td>
+                    <td>B</td>
+                </tr>
+                <tr>
+                    <td>Alert Flashers</td>
+                    <td>NA</td>
+                    <td>NA</td>
+                    <td>NA</td>
+                </tr>
+                <tr class="widget-tr-backgroud">
+                    <td>MPPT Module</td>
+                    <td>SN100456</td>
+                    <td>V1.0</td>
+                    <td>B</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+    function Factory()
+    {
+        var load = layer.load();
+        $.post('@Url.Content("~/PMGLess/FactoryReset")', { "sid": 1 }, function (res) {
+            layer.close(load)
+            alert("send message")
+            return false;
+        }, 'json');
+    }
+</script>

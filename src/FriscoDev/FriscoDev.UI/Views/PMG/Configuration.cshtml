@@ -1,0 +1,186 @@
+﻿
+@{
+    ViewBag.Title = "Configuration";
+}
+
+@section crumbs{
+
+    <div>
+        <span onclick="HomePage()" style="cursor:pointer;">Home</span>
+        <span>/</span>
+        <span>Device Mananger</span>
+        <span>/</span>
+        <span>SetUp</span>
+        <span>/</span>
+        <span>Configuration</span>
+    </div>
+}
+
+<div id="mainContent" class="layui-form">
+
+    <div class="content-title">Configuration</div>
+
+    <div class="layui-fuild">
+        <div class="layui-row" style="padding-top:30px;">
+
+            <div class="layui-col-md6">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">Set Time</label>
+                    <div class="layui-input-inline">
+                        <input type="text" class="layui-input" id="timeInput" value="@ViewBag.Time">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-md6">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">Set Date</label>
+                    <div class="layui-input-inline">
+                        <input type="text" class="layui-input" id="dateInput" value="@ViewBag.Date">
+                    </div>
+                </div>
+            </div>
+
+            <div class="layui-form-item" style="text-align:center">
+                <button id="sendLocalTime" class="button">Send Local Time</button>
+            </div>
+
+        </div>
+
+        <div class="layui-row">
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend>Properties</legend>
+            </fieldset>
+
+            <div class="layui-col-md6">
+                <div class="layui-form-item">
+                    <label class="layui-form-label" style="width:200px;">Minimum Display Speed</label>
+                    <div class="layui-input-inline">
+                        <input type="number" class="form-control-number-points" name="points" value="15" min="0" max="100" />
+                        <div class="input-number-button">
+                            <div class="add"></div>
+                            <div class="reduce"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-md6">
+                <div class="layui-form-item">
+                    <label class="layui-form-label" style="width:200px;">Maximum Display Speed</label>
+                    <div class="layui-input-inline">
+                        <input type="number" class="form-control-number-points" name="points" value="90" min="0" max="100" />
+                        <div class="input-number-button">
+                            <div class="add"></div>
+                            <div class="reduce"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="layui-form-item layui-col-md12">
+                <label class="layui-form-label" style="width:200px;">Unit</label>
+
+                <div class="layui-input-inline" style="padding-top: 7px; width: auto; background: none;">
+                    <div class="layui-inline">
+                        <label for="mph">
+                            <input type="radio" name="unit" id="mph" class="fancy" style="opacity: 0;">MPH
+                        </label>
+                    </div>
+
+                    <div class="layui-inline">
+                        <label for="kph">
+                            <input type="radio" name="unit" id="kph" class="fancy" style="opacity: 0;">KPH
+                        </label>
+                    </div>
+
+                    <div class="layui-inline">
+                        <label for="knotes">
+                            <input type="radio" name="unit" id="knotes" class="fancy" style="opacity: 0;">Knotes
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="layui-row">
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label" style="width:200px;">Set Brightness</label>
+
+                    <div class="layui-input-inline" style="width: 80px; background: none;">
+                        <div class="layui-inline" style="padding-top: 7px;">
+                            <label for="isAuto">
+                                <input type="radio" name="unit" id="isAuto" class="fancy" style="opacity: 0;">Auto
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="layui-input-inline" style="width: 100px;">
+                        <input type="number" class="form-control-number-points" name="points" value="90" min="0" max="100" />
+                        <span style="position: absolute; top: 0; left: 30px; line-height: 34px;">%</span>
+                        <div class="input-number-button">
+                            <div class="add"></div>
+                            <div class="reduce"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <div class="layui-form-label"></div>
+
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="allow" value="allow" class="fancy" checked="checked" style="opacity: 0;">Power Saving Mode
+                        </label>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-form-item" style="margin-left: 35%;">
+            <button class="button" type="submit" style="width:100px;">Save</button>
+        </div>
+    </div>
+</div>
+<script>
+    // bind time input
+    layui.use('laydate', function () {
+        var laydate = layui.laydate;
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#timeInput',
+            type: 'time',
+            lang: 'en',
+            theme: '#eb634d' //指定元素
+        });
+        timeLaydate = laydate
+    });
+
+    // bind date input
+    layui.use('laydate', function () {
+        var laydate = layui.laydate;
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#dateInput',
+            lang: 'en',
+            theme: '#eb634d' //指定元素
+        });
+        dateLaydate = laydate
+    });
+
+    // global
+    var timeLaydate, dateLaydate;
+
+    // send local time
+    $("#sendLocalTime").on("click", function () {
+        var now = new Date().getTime()
+        timeLaydate.render({
+            elem: '#timeInput',
+            value: new Date().getHours() + ":" + new Date().getMinutes() + ":" + new Date().getSeconds()
+        })
+
+        dateLaydate.render({
+            elem: '#dateInput',
+            value: new Date(now)
+        })
+    })
+</script>
