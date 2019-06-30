@@ -46,6 +46,12 @@
     <Compile Include="01 Infrastructure\IDeleteAudited.cs" />
     <Compile Include="01 Infrastructure\IEntity.cs" />
     <Compile Include="01 Infrastructure\IModificationAudited.cs" />
+    <Compile Include="02 Model\AverageSpeed.cs" />
+    <Compile Include="02 Model\CountPercentileModel.cs" />
+    <Compile Include="02 Model\SpeedCount.cs" />
+    <Compile Include="02 Model\SpeedPercentileModel.cs" />
+    <Compile Include="02 Model\StatsLogNewModel.cs" />
+    <Compile Include="02 Model\SurveyData.cs" />
     <Compile Include="03 Entity\DevFun.cs" />
     <Compile Include="03 Entity\EngrDevNew\AccountEntity.cs" />
     <Compile Include="03 Entity\EngrDevNew\CITYEntity.cs" />
