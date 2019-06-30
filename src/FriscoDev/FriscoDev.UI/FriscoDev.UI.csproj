@@ -153,6 +153,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PMGController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
+    <Compile Include="Controllers\SetupController.cs" />
     <Compile Include="Controllers\SiteController.cs" />
     <Compile Include="Controllers\StatsLogController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -321,6 +323,7 @@
     <Content Include="library\js\layui\font\iconfont.ttf" />
     <Content Include="library\js\layui\font\iconfont.woff" />
     <Content Include="Configs\database.Config" />
+    <Content Include="ClassDiagram1.cd" />
     <None Include="Properties\PublishProfiles\FriscoDev.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\initMenu.js" />
@@ -396,6 +399,14 @@
     <Content Include="Views\Device\Message.cshtml" />
     <Content Include="Views\Device\Device.cshtml" />
     <Content Include="Views\Report\Index.cshtml" />
+    <Content Include="Views\PMG\About.cshtml" />
+    <Content Include="Views\PMG\Animation.cshtml" />
+    <Content Include="Views\PMG\Configuration.cshtml" />
+    <Content Include="Views\PMG\Graphic.cshtml" />
+    <Content Include="Views\PMG\Schedule.cshtml" />
+    <Content Include="Views\PMG\TextOptions.cshtml" />
+    <Content Include="Views\Setup\Index.cshtml" />
+    <Content Include="Views\Site\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
