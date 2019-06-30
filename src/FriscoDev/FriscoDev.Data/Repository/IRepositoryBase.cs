@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
+using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -11,6 +12,7 @@ namespace FriscoDev.Data
 {
     public interface IRepositoryBase : IDisposable
     {
+        DbContext DataDbContext { get; }
         IRepositoryBase BeginTrans();
         int Commit();
         int Insert<TEntity>(TEntity entity) where TEntity : class;

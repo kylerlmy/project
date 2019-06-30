@@ -10,10 +10,17 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Text.RegularExpressions;
 
-namespace FriscoDev.Data
+namespace FriscoDev.Data.Repository
 {
     public class RepositoryBase : IRepositoryBase, IDisposable
     {
+        public DbContext DataDbContext
+        {
+            get
+            {
+                return dbcontext;
+            }
+        }
         private EngrDevNewDbContext dbcontext = new EngrDevNewDbContext();
         private DbTransaction dbTransaction { get; set; }
         public IRepositoryBase BeginTrans()
