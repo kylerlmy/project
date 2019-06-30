@@ -14,6 +14,9 @@ namespace FriscoDev.UI.Helper
         public static string LoginCookieUserName { get { return "Login_Cookies_UserName"; } }
         public static string LoginCookieRealName { get { return "Login_Cookies_RealName"; } }
         public static string LoginCookieUserType { get { return "Login_Cookies_UserType"; } }
+        public static string LoginCookieTimeZone { get { return "Login_Cookies_TimeZone"; } }
+
+
 
         public static string UserID
         {
@@ -34,6 +37,10 @@ namespace FriscoDev.UI.Helper
             get { return CookieHelper.GetCookie(LoginHelper.LoginCookieUserType).ToInt(0); }
         }
 
+        public static string TimeZone
+        {
+            get { return CookieHelper.GetCookie(LoginCookieTimeZone); }
+        }
 
         public static bool IsOnline()
         {
@@ -50,6 +57,7 @@ namespace FriscoDev.UI.Helper
             CookieHelper.SetCookie(LoginHelper.LoginCookieUserName, user.UR_NAME, CookieHelper.TimeUtil.mi, expireTimeSpan);
             CookieHelper.SetCookie(LoginHelper.LoginCookieRealName, user.UR_NAME, CookieHelper.TimeUtil.mi, expireTimeSpan);
             CookieHelper.SetCookie(LoginHelper.LoginCookieUserType, user.UR_TYPE_ID.ToString(), CookieHelper.TimeUtil.mi, expireTimeSpan);
+            CookieHelper.SetCookie(LoginHelper.LoginCookieTimeZone, user.TIME_ZONE.ToString(), CookieHelper.TimeUtil.mi, expireTimeSpan);
 
         }
 
@@ -59,7 +67,8 @@ namespace FriscoDev.UI.Helper
             CookieHelper.DelCookie(LoginHelper.LoginCookieUID);
             CookieHelper.DelCookie(LoginHelper.LoginCookieUserName);
             CookieHelper.DelCookie(LoginHelper.LoginCookieRealName);
-            CookieHelper.DelCookie(LoginHelper.LoginCookieUserType);
+            CookieHelper.DelCookie(LoginHelper.LoginCookieRealName);
+            CookieHelper.DelCookie(LoginHelper.LoginCookieTimeZone);
 
             if (System.Web.HttpContext.Current.Session != null)
             {

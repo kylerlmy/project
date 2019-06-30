@@ -153,8 +153,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PMGController.cs" />
-    <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\SiteController.cs" />
+    <Compile Include="Controllers\StatsLogController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -165,9 +165,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\CommonUtils.cs" />
     <Compile Include="Utils\HttpUtils.cs" />
+    <Compile Include="Utils\JsonNetResult.cs" />
     <Compile Include="Utils\LoginCommand.cs" />
+    <Compile Include="Utils\ResultEntity.cs" />
     <Compile Include="ViewModel\AddressViewModel.cs" />
     <Compile Include="ViewModel\BaseEnitity.cs" />
+    <Compile Include="ViewModel\GlobalModel.cs" />
+    <Compile Include="ViewModel\HomeIndexViewModel.cs" />
+    <Compile Include="ViewModel\SiteConfigViewModel.cs" />
+    <Compile Include="ViewModel\SiteViewModel.cs" />
+    <Compile Include="ViewModel\Timers.cs" />
     <Compile Include="ViewModel\UserManagementViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -389,17 +396,11 @@
     <Content Include="Views\Device\Message.cshtml" />
     <Content Include="Views\Device\Device.cshtml" />
     <Content Include="Views\Report\Index.cshtml" />
-    <Content Include="Views\PMG\Configuration.cshtml" />
-    <Content Include="Views\PMG\TextOptions.cshtml" />
-    <Content Include="Views\PMG\Graphic.cshtml" />
-    <Content Include="Views\PMG\Animation.cshtml" />
-    <Content Include="Views\PMG\Schedule.cshtml" />
-    <Content Include="Views\PMG\About.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Base\" />
-    <Folder Include="Views\Site\" />
+    <Folder Include="Views\StatsLog\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -425,6 +426,10 @@
     <ProjectReference Include="..\FriscoDev.Mapping\FriscoDev.Mapping.csproj">
       <Project>{e9034efd-ba10-4408-acc8-2e135c4bf7c3}</Project>
       <Name>FriscoDev.Mapping</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PMDInterface\PMDCellularInterface.csproj">
+      <Project>{40A4E676-4B93-451D-BFB8-50FBC444E61F}</Project>
+      <Name>PMDCellularInterface</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

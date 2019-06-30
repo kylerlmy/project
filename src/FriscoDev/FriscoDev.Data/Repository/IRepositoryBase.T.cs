@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
+using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 
@@ -13,6 +14,7 @@ namespace FriscoDev.Data
     /// <typeparam name="TEntity">实体类型</typeparam>
     public interface IRepositoryBase<TEntity> where TEntity : class, new()
     {
+        DbContext DataDbContext { get; }
         int Insert(TEntity entity);
         int Insert(List<TEntity> entitys);
         int Update(TEntity entity);

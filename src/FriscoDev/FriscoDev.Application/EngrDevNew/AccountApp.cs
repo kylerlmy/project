@@ -21,6 +21,10 @@ namespace FriscoDev.Application.EngrDevNew
         {
             return _repository.FindEntity(t => t.UR_NAME == userName);
         }
+        public void Add(AccountEntity entity)
+        {
+            _repository.Insert(entity);
+        }
 
     }
 }
