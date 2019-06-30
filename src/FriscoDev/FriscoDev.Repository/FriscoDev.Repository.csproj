@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9633B442-3994-4643-A1EF-769C65CBB03E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FriscoDev.Repository</RootNamespace>
+    <AssemblyName>FriscoDev.Repository</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EngrDevNew\AccountRepository.cs" />
+    <Compile Include="EngrDevNew\CITYRepository.cs" />
+    <Compile Include="EngrDevNew\COUNTRYYdRepository.cs" />
+    <Compile Include="EngrDevNew\CUSTOMERRepository.cs" />
+    <Compile Include="EngrDevNew\DeviceLocationRepository.cs" />
+    <Compile Include="EngrDevNew\DeviceNamesRepository.cs" />
+    <Compile Include="EngrDevNew\DEVICERepository.cs" />
+    <Compile Include="EngrDevNew\EVENTRepository.cs" />
+    <Compile Include="EngrDevNew\EVENT_TYPERepository.cs" />
+    <Compile Include="EngrDevNew\LANGUAGERepository.cs" />
+    <Compile Include="EngrDevNew\LeasedDeviceLogRepository.cs" />
+    <Compile Include="EngrDevNew\LOGRepository.cs" />
+    <Compile Include="EngrDevNew\Log_TYPERepository.cs" />
+    <Compile Include="EngrDevNew\MESSAGERepository.cs" />
+    <Compile Include="EngrDevNew\PMDConfigRepository.cs" />
+    <Compile Include="EngrDevNew\PMDRepository.cs" />
+    <Compile Include="EngrDevNew\SiteConfigRepository.cs" />
+    <Compile Include="EngrDevNew\StatsLogRepository.cs" />
+    <Compile Include="EngrDevNew\TimeZoneInfoRepository.cs" />
+    <Compile Include="EngrDevNew\TIMEZONERepository.cs" />
+    <Compile Include="EngrDevNew\UserLogInfoRepository.cs" />
+    <Compile Include="EngrDevNew\USERTYPERepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FriscoDev.Code\FriscoDev.Code.csproj">
+      <Project>{06484FD5-EF82-494A-B683-A333B349747A}</Project>
+      <Name>FriscoDev.Code</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FriscoDev.Data\FriscoDev.Data.csproj">
+      <Project>{88AA0E6A-56C8-4D9D-BD6B-4B99CFFA2375}</Project>
+      <Name>FriscoDev.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FriscoDev.Domain\FriscoDev.Domain.csproj">
+      <Project>{5BBB169D-DDAC-4C67-BF21-CD72CC998CA7}</Project>
+      <Name>FriscoDev.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

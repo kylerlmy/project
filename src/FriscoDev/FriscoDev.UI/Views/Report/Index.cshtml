@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "Data Log";
+}
+@section crumbs{
+    <div>
+        <span onclick="HomePage()" style="cursor:pointer;">Home</span>
+        <span>/</span>
+        <span>Device Mananger</span>
+        <span>/</span>
+        <span>Data Log</span>
+    </div>
+}
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<script src="~/Scripts/My97DatePicker/WdatePicker.js"></script>
+<style>
+    .selectOption {
+        height: 24px;
+        font-size: 14px;
+        line-height: 1.42857143;
+        color: #555;
+        background-color: #fff;
+        background-image: none;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        padding-left: 5px;
+    }
+</style>
+<div id="mainContent" class="layui-form">
+    <div id="about-div-device">
+        <div class="col-sm-4 col-sm-offset-8" style="font-weight:bold;padding: 15px 20px 10px 8%;">
+            <span>
+                <label>Number of lines per page： </label>
+                <select class="selectOption" onchange="search()">
+                    <option value="10" selected="selected">10</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                    <option value="25">25</option>
+                    <option value="30" selected="selected">30</option>
+                </select>
+            </span>
+            <span>
+                <input type="text" id="startDate" class="form-control usercontrol" value="" onclick="WdatePicker({ dateFmt: 'yyyy-MM-dd HH:mm'})" readonly="readonly" style="width:130px;" />
+            </span>
+            <sapn>
+                <input type="text" id="endDate" class="form-control usercontrol" value="" onclick="WdatePicker({ dateFmt: 'yyyy-MM-dd HH:mm'})" readonly="readonly" style="width:130px;" />
+            </sapn>
+        </div>
+    </div>
+</div>

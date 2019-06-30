@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E9034EFD-BA10-4408-ACC8-2E135C4BF7C3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FriscoDev.Mapping</RootNamespace>
+    <AssemblyName>FriscoDev.Mapping</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EngrDevNew\AccountMap.cs" />
+    <Compile Include="EngrDevNew\CITYMap.cs" />
+    <Compile Include="EngrDevNew\COUNTRYMap.cs" />
+    <Compile Include="EngrDevNew\COUNTRYYdMap.cs" />
+    <Compile Include="EngrDevNew\DeviceLocationMap.cs" />
+    <Compile Include="EngrDevNew\DEVICEMap.cs" />
+    <Compile Include="EngrDevNew\DeviceNamesMap.cs" />
+    <Compile Include="EngrDevNew\EVENTMap.cs" />
+    <Compile Include="EngrDevNew\EVENT_TYPEMap.cs" />
+    <Compile Include="EngrDevNew\LANGUAGEMap.cs" />
+    <Compile Include="EngrDevNew\LeasedDeviceLogMap.cs" />
+    <Compile Include="EngrDevNew\LOGMap.cs" />
+    <Compile Include="EngrDevNew\LOG_TYPEMap.cs" />
+    <Compile Include="EngrDevNew\MESSAGEMap.cs" />
+    <Compile Include="EngrDevNew\PMDConfigMap.cs" />
+    <Compile Include="EngrDevNew\PMDMap.cs" />
+    <Compile Include="EngrDevNew\SiteConfigMap.cs" />
+    <Compile Include="EngrDevNew\StatsLogMap.cs" />
+    <Compile Include="EngrDevNew\TimeZoneInfoMap.cs" />
+    <Compile Include="EngrDevNew\TIMEZONEMap.cs" />
+    <Compile Include="EngrDevNew\UserLoginInfoMap.cs" />
+    <Compile Include="EngrDevNew\USERTYPEMap.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="PMG\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FriscoDev.Domain\FriscoDev.Domain.csproj">
+      <Project>{5BBB169D-DDAC-4C67-BF21-CD72CC998CA7}</Project>
+      <Name>FriscoDev.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "Device List";
+}
+
+@section crumbs{
+    <div>
+        <span onclick="HomePage()" style="cursor:pointer;">Home</span>
+        <span>/</span>
+        <span>Administration</span>
+        <span>/</span>
+        <span>PMG Device</span>
+    </div>
+}
+<script>
+   $(function () {
+        gridList();
+    })
+    function gridList(){
+        var $gridList = $("#gridList");
+        $gridList.dataGrid({
+            url: "@Url.Content("~/Device/GetDeviceList")",
+            
+            colModel: [
+                { label: 'Device Name', name: 'PMDName', width: 80, align: 'center' },
+                { label: 'ID', name: 'PMD_ID', width: 80, align: 'center' },
+                {
+                    label: 'Device Type', name: 'DeviceType', width: 60, align: 'center',
+                    formatter: function (cellvalue, options, rowObject) {
+                        if (cellvalue == 1) {
+                            return 'PMG-12';
+                        } else if (cellvalue == 2) {
+                            return 'PMG-15';
+                        }
+                        else if (cellvalue == 3) {
+                            return 'PMG-18';
+                        }
+                        else {
+                            return 'PMG-12';
+                        }
+                    }
+                },
+                { label: 'Last Update', name: 'LastUpdate', width: 80, align: 'center' },
+                { label: 'Alert Status', name: 'ShowStatsCollection', width: 150, align: 'center' },
+                {
+                    label: 'Connection', name: 'ShowConnection', width: 80, align: 'center'
+                },
+                {
+                    label: 'High Speed Alert', name: 'HighSpeedAlert', width: 80, align: 'center'
+                },
+                {
+                    label: 'Low Speed Alert', name: 'LowSpeedAlert', width: 80, align: 'center',
+                },
+            ],
+            pager: "#gridPager",
+            sortname: 'PMDName asc',
+            viewrecords: true,
+            rowNum:10,
+        });
+    }
+
+</script>
+
+<div class="gridPanel" >
+        <table id="gridList"></table>
+        <div id="gridPager"></div>
+</div >

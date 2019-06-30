@@ -1,0 +1,388 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - ACI-PMG</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="~/library/assets/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/library/assets/css/bootstrap-responsive.css" rel="stylesheet" />
+    <link href="~/library/css/styles.css" rel="stylesheet" />
+    <link href="~/library/js/layui/css/layui.css" rel="stylesheet" />
+    <script src="~/Scripts/jqgrid/jqgrid.min.js"></script>
+    <script src="~/Scripts/jqgrid/grid.locale-cn.js"></script>
+    <link href="~/Scripts/jqgrid/jqgrid.css" rel="stylesheet" />
+    @*@Styles.Render("~/library/styles")*@
+    @*@Scripts.Render("~/library/mainjs")*@
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/layer/layer.js"></script>
+    <script src="~/Scripts/public.js"></script>
+
+    <script src="~/library/assets/js/jquery.js"></script>
+    <script src="~/library/js/layui/layui.js"></script>
+    <script src="~/library/assets/js/bootstrap.min.js"></script>
+    <script src="~/library/plugins/jquery.uniform.js"></script>
+    <script src="~/library/js/cookie.js"></script>
+    <script src="~/library/js/main.js"></script>
+    <script src="~/library/js/index.js"></script>
+
+    <style>
+        label.connection {
+            font-size: 11px;
+        }
+
+        a {
+            cursor: pointer;
+        }
+
+        .common-nav-list {
+            top: 150px;
+        }
+    </style>
+
+    @RenderSection("head", false)
+    <script>
+        function HomePage() {
+            window.location.href = "@Url.Action("Index","Home")";
+        }
+        function SystemMessage()
+        {
+            window.location.href = "@Url.Action("Message", "Device")";
+        }
+    </script>
+</head>
+
+<body id="body-div">
+
+    @Html.Partial("_PartialView")
+
+    <div class="common-nav">
+        <div class="common-nav-list">
+            <ul class="ul">
+                <li>
+                    <div>
+                        <div class="title" onclick="HomePage()"><img src="@Url.Content("~/library/images/Site_icon.png")" alt="">Site Supervisor</div>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <div class="title"><img src="@Url.Content("~/library/images/Device_icon.png")" alt="">Device Manager</div>
+
+                        <div class="ul_list">
+                            <ul>
+                                <li>
+                                    <div>
+                                        <div class="l_title" onclick="HomePage()">Device Location</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div>
+                                        <div class="l_title" onclick="SystemMessage()">System Message</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div>
+                                        <div class="l_title">SetUp</div>
+                                    </div>
+                                    <div class="ul_lists">
+                                        <ul>
+                                            <li><div><div class="l_title"><a href="@Url.Action("Index","PMG")" onclick="HomePage()">Quick Setup</a></div></div></li>
+                                            <li><div><div class="l_title"><a href="javascript:void(0)">Configuration</a></div></div></li>
+                                            <li><div><div class="l_title">Text Options</div></div></li>
+                                            <li><div><div class="l_title">Graphic</div></div></li>
+                                            <li><div><div class="l_title">Animation</div></div></li>
+                                            <li><div><div class="l_title">Schedule</div></div></li>
+                                            <li><div><div class="l_title">About</div></div></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div>
+                                        <div class="l_title">Real Time Charts</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div>
+                                        <div class="l_title">Data Log</div>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <div class="title"><img src="@Url.Content("~/library/images/Date_icon.png")" alt="">Date Analysis</div>
+                        <div class="ul_list">
+                            <ul>
+                                <li>
+                                    <div>
+                                        <div class="l_title">History Data</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div>
+                                        <div class="l_title">Time vs Count</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div>
+                                        <div class="l_title">Speed vs Count</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div>
+                                        <div class="l_title">Enforcement Pie</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div>
+                                        <div class="l_title">Weekly Count vs Time</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div>
+                                        <div class="l_title">Enforcement Schedule</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div>
+                                        <div class="l_title">Count vs Speed Percentile</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div>
+                                        <div class="l_title">Average Speed vs Count</div>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="container">
+            <div class="slogan">
+                <img src="@Url.Content("~/library/images/slogen_icon.png")" alt="">
+            </div>
+            <div class="link">
+                <div class="user">
+                    <div>
+                        <img src="@Url.Content("~/library/images/user_icon.png")" alt="">
+                        <span>Administration</span>
+                    </div>
+                    <div class="list">
+                        <a href="@Url.Content("~/User/Index")">User</a>
+                        <a href="#">Site</a>
+                        <a href="@Url.Content("~/Device/Index")">PMG Device</a>
+                    </div>
+                </div>
+                <div class="watch">
+                    <div>
+                        <img src="@Url.Content("~/library/images/nav_icon.png")" alt="">
+                        <span>Choose a device</span>
+                    </div>
+                    <div class="list">
+                        <ul class="MenuDeviceList">
+                            <li><a href="#">Device01</a></li>
+                            <li><a href="#">Device02</a></li>
+                            <li><a href="#">Device03</a></li>
+                            <li><a href="#">Device04</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="exit">
+                    <div onclick="Logout()">
+                        <img src="@Url.Content("~/library/images/exit_icon.png")" alt="">
+                        <span>Log out</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="web-common-nav">
+        <div class="web-common-nav-btn"></div>
+        <div class="slogan">
+            <img src="@Url.Content("~/library/images/slogen_icon.png")" alt="">
+        </div>
+    </div>
+    <div class="web-common-nav-list">
+        <div>
+            <ul class="web-ul">
+                <li>
+                    <div>
+                        <div class="title" onclick="HomePage()"><img src="@Url.Content("~/library/images/Site_icon.png")" alt="">Site Supervisor</div>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <div class="title"><img src="@Url.Content("~/library/images/Device_icon.png")" alt="">Device Manager</div>
+                        <div class="ul_list">
+                            <ul>
+                                <li>
+                                    <div>
+                                        <div class="l_title" onclick="HomePage()">Device Location</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div>
+                                        <div class="l_title">System Message</div>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div>
+                                        <div class="l_title">SetUp</div>
+                                    </div>
+                                    <div class="ul_lists">
+                                        <ul>
+                                            <li><div><div class="l_title"><a href="@Url.Action("Index","PMG")">Quick Setup</a></div></div></li>
+                                            <li><div><div class="l_title"><a href="configuration.html">Configuration</a></div></div></li>
+                                            <li><div><div class="l_title">Graphic</div></div></li>
+                                            <li><div><div class="l_title">Animation</div></div></li>
+                                            <li><div><div class="l_title">Schedule</div></div></li>
+                                            <li><div><div class="l_title">About</div></div></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div>
+                                        <div class="l_title">Real Time Charts</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div>
+                                        <div class="l_title">Data Log</div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <div class="title"><img src="@Url.Content("~/library/images/Date_icon.png")" alt="">Date Analysis</div>
+                        <div class="ul_list">
+                            <ul>
+                                <li>
+                                    <div>
+                                        <div class="l_title">History Data</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div>
+                                        <div class="l_title">Time vs Count</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div>
+                                        <div class="l_title">Speed vs Count</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div>
+                                        <div class="l_title">Enforcement Pie</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div>
+                                        <div class="l_title">Weekly Count vs Time</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div>
+                                        <div class="l_title">Enforcement Schedule</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div>
+                                        <div class="l_title">Count vs Speed Percentile</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div>
+                                        <div class="l_title">Average Speed vs Count</div>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <div class="title">
+                            <img src="@Url.Content("~/library/images/user_icon.png")" alt="">
+                            <span>Administration</span>
+                        </div>
+                        <div class="ul_list">
+                            <ul>
+                                <li><a href="@Url.Content("~/User/Index")">User</a></li>
+                                <li><a href="#">Site</a></li>
+                                <li><a href="#">PMG Device</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <div class="title">
+                            <img src="@Url.Content("~/library/images/nav_icon.png")" alt="">
+                            <span>Choose a device</span>
+                        </div>
+                        <div class="ul_list">
+                            <ul class="MenuDeviceList">
+                                <li><a href="#">Device01</a></li>
+                                <li><a href="#">Device02</a></li>
+                                <li><a href="#">Device03</a></li>
+                                <li><a href="#">Device04</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="">
+                        <div class="title">
+                            <img src="@Url.Content("~/library/images/exit_icon.png")" alt="">
+                            <span>Log out</span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="common-content">
+        <div class="container " style="position: relative; max-width: 1300px;">
+            <div id="left_layout">
+                <div class="common-address">
+                    @RenderSection("crumbs", required: false)
+
+                    <span class="current_selected">Currently seleted PMG: <label class="dev">PMG-12/ Device02</label></span>
+                </div>
+
+                @RenderBody()
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="footer"></div>
+
+    @RenderSection("scripts", required: false)
+
+    <script>
+        function Logout() {
+            window.location.href = "@Url.Content("~/Login/LoginOut")";
+        }
+
+        initDevice();
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,91 @@
+﻿
+@{
+    ViewBag.Title = "Device List";
+}
+
+@section crumbs{
+    <div>
+        <span onclick="HomePage()" style="cursor:pointer;">Home</span>
+        <span>/</span>
+        <span>Administration</span>
+        <span>/</span>
+        <span>PMG Device</span>
+    </div>
+}
+
+
+<div id="mainContent" class="layui-form">
+
+    <div id="about-div-device">
+        <table id="about-table-deviceinfo" class="table text-center">
+            <thead>
+                <tr class="header-background">
+                    <th>Device Name</th>
+                    <th>ID</th>
+                    <th>Device Type</th>
+                    <th>Last Update</th>
+                    <th>Alert Status</th>
+                    <th>Connection</th>
+                    <th>High Speed Alert</th>
+                    <th>Low Speed Alert</th>
+                </tr>
+            </thead>
+            <tbody id="bindData"></tbody>
+        </table>
+
+        @Html.Partial("_PartialPage")
+
+    </div>
+</div>
+
+<script>
+    var pageSize = 10;
+    function search() {
+        var pageIndex = $("#PageIndex").val();
+        $.ajax({
+            url: "@Url.Content("~/Device/GetDeviceList")",
+            data: {
+                "pageIndex": parseInt(pageIndex),
+                "pageSize": pageSize
+            },
+            dataType: 'json', type: "POST",
+            success: function (result) {
+
+                $("#total").html(result.iCount);
+                var pageCount = result.pageCount == 0 ? 1 : result.pageCount;
+                $("#divPagination").jqPaginator({
+                    totalPages: parseInt(pageCount),
+                    visiblePages: 10,
+                    currentPage: parseInt(pageIndex),
+                    onPageChange: function (num, type) {
+                        $('#PageIndex').val(num);
+                        if ($('#divPagination .active').eq(0).attr('jp-data') !== num.toString()) {
+                            search();
+                        }
+                    }
+                });
+                var html = "";
+                if (result.list.length > 0) {
+                    for (var i = 0; i < result.list.length; i++) {
+                        html += '<tr>' +
+                                  ' <td class="text-center">' + result.list[i].PMDName + '</td>' +
+                                  ' <td class="text-center">' + result.list[i].PMD_ID + '</td>' +
+                                  ' <td class="text-center">' + result.list[i].ShowDeviceType + '</td>' +
+                                  ' <td class="text-center">' + result.list[i].LastUpdate + '</td>' +
+                                  ' <td class="text-center">' + result.list[i].ShowStatsCollection + '</td>' +
+                                  ' <td class="text-center">' + result.list[i].ShowConnection + '</td>' +
+                                  ' <td class="text-center">' + result.list[i].HighSpeedAlert + '</td>' +
+                                  ' <td class="text-center">' + result.list[i].LowSpeedAlert + '</td>' ;
+                        html += '</tr>';
+                    }
+                } else {
+                    html += '<tr><td class="text-center" colspan="8">No data</td></tr>';
+                }
+
+                $("#bindData").html(html);
+            }
+        });
+    }
+
+    search();
+</script>
