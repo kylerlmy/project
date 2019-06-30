@@ -153,6 +153,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PMGController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\SiteController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -388,6 +389,12 @@
     <Content Include="Views\Device\Message.cshtml" />
     <Content Include="Views\Device\Device.cshtml" />
     <Content Include="Views\Report\Index.cshtml" />
+    <Content Include="Views\PMG\Configuration.cshtml" />
+    <Content Include="Views\PMG\TextOptions.cshtml" />
+    <Content Include="Views\PMG\Graphic.cshtml" />
+    <Content Include="Views\PMG\Animation.cshtml" />
+    <Content Include="Views\PMG\Schedule.cshtml" />
+    <Content Include="Views\PMG\About.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

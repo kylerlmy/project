@@ -1,0 +1,106 @@
+﻿@{
+    ViewBag.Title = "Animation";
+}
+
+@section crumbs{
+
+    <div>
+        <span onclick="HomePage()" style="cursor:pointer;">Home</span>
+        <span>/</span>
+        <span>Device Mananger</span>
+        <span>/</span>
+        <span>SetUp</span>
+        <span>/</span>
+        <span>Animation</span>
+    </div>
+}
+
+div class="container">
+<div id="left_layout">
+    <div id="mainContent" class="layui-form">
+
+        <div class="layui-fuild">
+
+            <div class="content-title">Animation</div>
+        </div>
+        <div class="layui-row">
+
+
+            <div class="layui-col-md4">
+                <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                    <legend>Installed Animation Pages</legend>
+                </fieldset>
+                <div class="layui-form-item" style="text-align: center;">
+                    <div class="layui-inline">
+                        <select multiple="multiple" style="width: 250px;height: 350px;">
+                            <option selected="selected">Arrow 1</option>
+                            <option>Arrow 2</option>
+                            <option>Arrow 3</option>
+                            <option>Arrow 4</option>
+                            <option>Arrow 5</option>
+                            <option>User Care</option>
+                            <option>Slick Roads</option>
+                            <option>Ice Ahead</option>
+                            <option>DIP Ahead</option>
+                            <option>Bike Lane</option>
+                            <option>Thank You</option>
+                            <option>Ramp Open</option>
+                            <option>Ramp Closed</option>
+                            <option>Exit</option>
+                            <option>Buckle Up</option>
+                            <option>Icy Bridge</option>
+                            <option>Slow Traffic</option>
+                            <option>Lane Closed</option>
+                            <option>Crew Working</option>
+                            <option>Do Not Pass</option>
+                            <option>Drive Safely</option>
+                            <option>Dust Storm</option>
+                            <option>Exit Here</option>
+                            <option>Exit Now</option>
+                            <option>Keep Right</option>
+                        </select>
+                    </div>
+                    <div class="layui-inline">
+                        <button class="button" style="margin-top: 20px;">Delete Selected Item</button>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-md6" style="margin-left: 10%;margin-top: 20px;">
+                <div class="title-div-name"> New Animation</div>
+                <div class="layui-form-item">
+                    <div class="layui-inline" style="margin:40px 10px 20px;">
+                        <label class="label-tip-blod">Name</label>
+                        <div class="layui-input-inline" style="width:auto;">
+                            <input type="text" name="text-line-name" class="form-control" style="width:370px;" />
+                        </div>
+                        <div>
+                            <textarea class="textarea-content-animation"></textarea>
+                        </div>
+                    </div>
+                    <div class="layui-inline" style="margin-left:10%;">
+                        <button class="button">Start</button>
+                        <button class="button">Forward</button>
+                        <button class="button">Back</button>
+                        <button class="button">Run</button>
+                    </div>
+
+                    <div class="layui-inline" style="margin-left:10%;margin-top: 22px;">
+                        <label class="layui-form-label" style="width:auto;">Frame Display Time</label>
+                        <div class="layui-input-inline" style="width: 100px;">
+                            <input type="number" class="form-control-number-points" name="points" value="1" min="1" max="100" />
+                            <div class="input-number-button">
+                                <div class="add"></div>
+                                <div class="reduce"></div>
+                            </div>
+                        </div>
+                        <button class="button" style="margin-left: 20px;">Save to List</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+</div>
+

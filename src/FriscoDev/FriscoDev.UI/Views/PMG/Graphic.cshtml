@@ -1,0 +1,91 @@
+﻿@{
+    ViewBag.Title = "Graphic";
+}
+
+@section crumbs{
+
+    <div>
+        <span onclick="HomePage()" style="cursor:pointer;">Home</span>
+        <span>/</span>
+        <span>Device Mananger</span>
+        <span>/</span>
+        <span>SetUp</span>
+        <span>/</span>
+        <span>Graphic</span>
+    </div>
+}
+
+
+<div class="container">
+    <div id="left_layout">
+        <div id="mainContent" class="layui-form">
+
+            <div class="layui-fuild">
+
+                <div class="content-title">Graphic</div>
+            </div>
+            <div class="layui-row">
+
+
+                <div class="layui-col-md4">
+                    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                        <legend>Installed Graphic Pages</legend>
+                    </fieldset>
+                    <div class="layui-form-item" style="text-align: center;">
+                        <div class="layui-inline">
+                            <select multiple="multiple" style="width: 250px;height: 350px;">
+                                <option selected="selected">School Zone</option>
+                                <option>Work Zone</option>
+                                <option>Slow Zone</option>
+                                <option>Reduce Speed</option>
+                                <option>User Care</option>
+                                <option>Slick Roads</option>
+                                <option>Ice Ahead</option>
+                                <option>DIP Ahead</option>
+                                <option>Bike Lane</option>
+                                <option>Thank You</option>
+                                <option>Ramp Open</option>
+                                <option>Ramp Closed</option>
+                                <option>Exit</option>
+                                <option>Buckle Up</option>
+                                <option>Icy Bridge</option>
+                                <option>Slow Traffic</option>
+                                <option>Lane Closed</option>
+                                <option>Crew Working</option>
+                                <option>Do Not Pass</option>
+                                <option>Drive Safely</option>
+                                <option>Dust Storm</option>
+                                <option>Exit Here</option>
+                                <option>Exit Now</option>
+                                <option>Keep Right</option>
+                            </select>
+                        </div>
+                        <div class="layui-inline">
+                            <button class="button" style="margin-top: 20px;">Delete Selected Item</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md6" style="margin-left: 10%;margin-top: 20px;">
+                    <div class="title-div-name"> New Graphic</div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline" style="margin:40px 10px 20px;">
+                            <label class="label-tip-blod">Name</label>
+                            <div class="layui-input-inline" style="width:auto;">
+                                <input type="text" name="text-line-name" class="form-control" style="width:370px;" />
+                            </div>
+                            <div>
+                                <textarea class="textarea-content"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="layui-inline" style="margin-left: 35%;">
+                            <button class="button" style="margin-top: 20px;">Save to List</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
