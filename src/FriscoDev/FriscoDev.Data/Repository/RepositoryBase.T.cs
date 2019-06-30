@@ -18,7 +18,14 @@ namespace FriscoDev.Data.Repository
     /// <typeparam name="TEntity"></typeparam>
     public class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : class,new()
     {
-        public EngrDevNewDbContext dbcontext = new EngrDevNewDbContext();
+        public DbContext DataDbContext
+        {
+            get
+            {
+                return dbcontext;
+            }
+        }
+        private EngrDevNewDbContext dbcontext = new EngrDevNewDbContext();
         public int Insert(TEntity entity)
         {
             dbcontext.Entry<TEntity>(entity).State = EntityState.Added;
