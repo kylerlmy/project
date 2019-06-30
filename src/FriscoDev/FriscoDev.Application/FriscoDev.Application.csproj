@@ -59,6 +59,10 @@
     <Compile Include="EngrDevNew\AccountApp.cs" />
     <Compile Include="EngrDevNew\MessageApp.cs" />
     <Compile Include="EngrDevNew\PMDApp.cs" />
+    <Compile Include="EngrDevNew\SiteConfigApp.cs" />
+    <Compile Include="EngrDevNew\StatsLogApp.cs" />
+    <Compile Include="EngrDevNew\TimeZoneInfoApp.cs" />
+    <Compile Include="EngrDevNew\UserLoginInfoApp.cs" />
     <Compile Include="Models\Account.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
